@@ -1,3 +1,5 @@
+import '../style/style.css'
+
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
@@ -22,7 +24,7 @@ class SongList extends Component {
       return (
         <li className="collection-item" key={i}>
           {title}
-          <i className="material-icons right" onClick={(e) => this.onSongDelete(id)}>delete</i>
+          <i className="material-icons" onClick={(e) => this.onSongDelete(id)}>delete</i>
         </li>
       );
     });
