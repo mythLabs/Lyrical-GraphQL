@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+import { Link, hashHistory } from "react-router";
 
 class SongCreate extends Component {
   constructor(props) {
@@ -17,12 +18,14 @@ class SongCreate extends Component {
         variables:{
             title: this.state.title
         }
-        }) 
+        }).then(() => { hashHistory.push("/") })
+          .catch(() => {}); 
   }
 
   render() {
     return (
       <div>
+          <Link to="/">Back</Link>
         <h3>Create Song</h3>
         <form onSubmit={(e) => this.onSubmit(e)}>
           <label>Song Title:</label>
@@ -32,7 +35,7 @@ class SongCreate extends Component {
             }}
             value={this.state.title}
           />
-          <button type="submit"> save </button>
+          <button type="submit" className="btn-floating btn-large green right"> <i className="material-icons">save</i> </button>
         </form>
       </div>
     );
